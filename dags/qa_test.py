@@ -6,7 +6,7 @@ from airflow.models.variable import Variable
 from airflow.providers.microsoft.azure.operators.data_factory import (
     AzureDataFactoryRunPipelineOperator
 )
-from airflow.providers.microsoft.azure.operators.synapse import AzureSynapseRunPipelineOperator
+from operators.synapse import AzureSynapseRunPipelineOperator
 
 from datetime import datetime, timedelta
 
