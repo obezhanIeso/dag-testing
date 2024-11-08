@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 
 REGIONS = ["uk"]
-or region in REGIONS:
+for region in REGIONS:
     dag_id = f"test_{region}"
     with DAG(
         dag_id=dag_id,
