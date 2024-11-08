@@ -11,9 +11,9 @@ def sleep_function(time):
     time.sleep(time)
 
 
-REGIONS = ["uk", "qa", "prod-uk", "prod-us", "dev"]
+REGIONS = ["uk"]
 for region in REGIONS:
-    dag_id = f"test_{region}"
+    dag_id = f"long_dag_{region}"
     with DAG(
         dag_id=dag_id,
         description=f"""
@@ -22,7 +22,7 @@ for region in REGIONS:
         start_date=datetime(2024, 10, 9),
         max_active_runs=1,
         catchup=False,
-        schedule_interval="@hourly",
+        schedule_interval="@daily",
         default_args={
             "owner": "Oleg Bezhan",
             "depends_on_past": False,
@@ -36,21 +36,7 @@ for region in REGIONS:
         sleep_task = PythonOperator(
             task_id="sleep_task",
             python_callable=sleep_function,
-            op_args=[20],
+            op_args=[180],
         )
 
-        dummy_op2 = DummyOperator(
-            task_id="DummyOperator2",
-        )
-
-        sleep_task2 = PythonOperator(
-            task_id="sleep_task2",
-            python_callable=sleep_function,
-            op_args=[10],
-        )
-
-        dummy_op3 = DummyOperator(
-            task_id="DummyOperator3",
-        )
-
-        dummy_op1 >> sleep_task >> dummy_op2 >> sleep_task2 >> dummy_op3
+        dummy_op1 >> sleep_task
