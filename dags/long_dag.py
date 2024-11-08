@@ -6,9 +6,8 @@ from datetime import datetime, timedelta
 import time
 
 
-def sleep_function(time):
-    time = time * 60
-    time.sleep(time)
+def sleep_function(sleep_time):
+    time.sleep(sleep_time * 60)
 
 
 REGIONS = ["uk"]
