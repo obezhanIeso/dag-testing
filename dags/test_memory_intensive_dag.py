@@ -35,11 +35,11 @@ for region in REGIONS:
             task_id="DummyOperator1",
         )
 
-        # task = PythonOperator(
-        #     task_id='memory_intensive_task',
-        #     python_callable=memory_intensive_task,
-        # )
-        #
+        task = PythonOperator(
+            task_id='memory_intensive_task',
+            python_callable=memory_intensive_task,
+        )
+
         # task2 = PythonOperator(
         #     task_id='memory_intensive_task2',
         #     python_callable=memory_intensive_task,
