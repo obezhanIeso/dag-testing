@@ -30,7 +30,6 @@ with DAG(
     azure_synapse_conn_id = f"azure_synapse_{REGION}"
     azure_data_factory_conn_id = f"azure_data_factory_{REGION}"
     unprocessed_storage_account = Variable.get(f"unprocessed_storage_account_{REGION}")
-    processed_storage_account = Variable.get(f"processed_storage_account_{REGION}")
     date_start = "{{ data_interval_start.strftime('%Y/%m/%d') }}"
     date_end = "{{ data_interval_end.strftime('%Y/%m/%d') }}"
     region = Variable.get(f"region_{REGION}")
