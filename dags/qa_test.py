@@ -77,7 +77,9 @@ with DAG(
         task_id="run_import_dp2_capi",
         pipeline_name="DP2_CAPI_full_load_75w_TopLevel",
         retries=1,
-        azure_data_factory_conn_id=azure_data_factory_conn_id
+        azure_data_factory_conn_id=azure_data_factory_conn_id,
+        factory_name="adf-batch-ingestion-uksouth-kwok",
+        resource_group_name="rg-batch-ingestion-uksouth-kwok",
     )
 
     run_dp2_capi_landing_to_conformance_task = AzureSynapseRunPipelineOperator(
